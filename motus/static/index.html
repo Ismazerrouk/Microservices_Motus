@@ -73,6 +73,7 @@
     <div id="wordFeedback"></div>
     <input type="text" id="wordInput" placeholder="Enter your guess">
     <button onclick="checkWord()">Check</button>
+    <button onclick="viewScoreHistory()">View Score History</button>
 
     <script>
         async function fetchWordLength() {
@@ -97,6 +98,11 @@
                 setScore('playerName', 10);
             }
         }
+
+        function viewScoreHistory() {
+            // Assuming the user's score history is accessible at /score.html
+            // This URL should be adjusted based on how you've set up your routing and where the score history is actually displayed
+            window.location.href = '/score.html';
 
         fetchWordLength();
     </script>
