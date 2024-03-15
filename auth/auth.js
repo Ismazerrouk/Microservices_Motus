@@ -17,7 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //const RedisStore = require('connect-redis')(session); // Importez RedisStore
 
-let client = redis.createClient();
+let client = redis.createClient({
+    url : process.env.REDIS_URL
+});
 
 (async () => {
     await client.connect();

@@ -11,6 +11,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3005:3005"
+    environment:
+      - REDIS_URL=redis://redis:6379
 
   motus:
     build:
