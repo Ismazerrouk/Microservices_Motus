@@ -58,15 +58,16 @@ flowchart TD
     subgraph score["score"]
         score_endpoint["/score"]
     end
-    redis_db[("Redis DB")]
+    redis_db_auth[("Redis DB Auth")]
+    redis_db_score[("Redis DB Score")]
     user["User"]
     user -->|POST| login
     user -->|POST| register
-    login -->|GET| redis_db
-    register -->|SET| redis_db
+    login -->|GET| redis_db_auth
+    register -->|SET| redis_db_auth
     login -->|Redirect| motus
     user -->|GET| word
     user -->|POST| checkword
     checkword -->|POST| score_endpoint
-    score_endpoint -->|GET| redis_db
+    score_endpoint -->|GET| redis_db_score
 
