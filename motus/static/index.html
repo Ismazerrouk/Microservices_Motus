@@ -1,25 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Existing head content -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu du Motus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #wordLength, #wordFeedback {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        span.correct {
+            background-color: green;
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        span.partial {
+            background-color: orange;
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        span.empty {
+            padding: 5px;
+            border-radius: 3px;
+        }
+    </style>
+
 </head>
 <body>
-<h1>Motus Game</h1>
-<div id="wordLength"></div>
-<div id="wordFeedback"></div>
-<input type="text" id="wordInput" placeholder="Enter your guess">
-<button onclick="checkWord()">Check</button>
-<!-- New button for viewing score history -->
-<button onclick="viewScoreHistory()">View Score History</button>
+    <h1>Motus Game</h1>
+    <div id="wordLength"></div>
+    <div id="wordFeedback"></div>
+    <input type="text" id="wordInput" placeholder="Enter your guess">
+    <button onclick="checkWord()">Check</button>
 
-<script>
-    // Existing scripts
+    <script>
+        async function fetchWordLength() {
+            const response = await fetch('/word');
+            const data = await response.json();
+            document.getElementById('wordLength').innerText = `Word Length: ${data.wordLength}`;
+        }
 
-    // New function to redirect to score history page
-    function viewScoreHistory() {
-        // Redirect the user to the score.html page
-        window.location.href = '/score.html';
-    }
-</script>
+        async function checkWord() {
+            const word = document.getElementById('wordInput').value;
+            const response = await fetch('/checkword', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ word })
+            });
+            const data = await response.json();
+            document.getElementById('wordFeedback').innerHTML = data.feedback;
+            console.log('Correct Positions:', data.correctPositions);
+            if (data.correctPositions === word.length) {
+                setScore('playerName', 10);
+            }
+        }
+
+        fetchWordLength();
+    </script>
+
+    <script>
+        async function setScore(player, score) {
+            await fetch('http://localhost:4000/setscore', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ player, score }),
+            });
+        }
+
+        async function getScore(player) {
+            const response = await fetch(`http://localhost:4000/getscore/${player}`);
+            const data = await response.json();
+            console.log(data);
+        }
+    </script>
 </body>
 </html>
