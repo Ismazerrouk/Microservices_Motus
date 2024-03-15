@@ -3,11 +3,11 @@ services:
   redis-auth:
     image: redis
     ports:
-      - "6379"
+      - "6379:6379"
   redis-score:
     image: redis
     ports:
-      - "6380"
+      - "6380:6379"
   auth:
     build: ./auth
     ports:
