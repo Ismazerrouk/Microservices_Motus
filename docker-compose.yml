@@ -1,9 +1,15 @@
 version: '3'
+
 services:
-  redis:
+  redis-auth:
     image: redis:latest
     ports:
       - "6379:6379"
+
+  redis-score:
+    image: redis:latest
+    ports:
+      - "6380:6379"
 
   auth:
     build:
@@ -12,7 +18,7 @@ services:
     ports:
       - "3005:3005"
     environment:
-      - REDIS_URL=redis://redis:6379
+      - REDIS_URL=redis://redis-auth:6379
 
   motus:
     build:
@@ -28,4 +34,4 @@ services:
     ports:
       - "3001:3001"
     environment:
-      - REDIS_URL=redis://redis:6379
+      - REDIS_URL=redis://redis-score:6379
