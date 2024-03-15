@@ -72,6 +72,8 @@ app.post('/checkword', (req, res) => {
   res.json({ feedback, correctPositions });
 });
 
+// Commented out section moved to 'score' microservice
+/*
 // In-memory storage for demonstration
 let scores = {};
 
@@ -92,7 +94,7 @@ app.get('/getscore/:player', (req, res) => {
     res.status(404).send('Player not found');
   }
 });
-
+*/
 
 app.listen(port, () => {
   console.log(`Server is listening at http://localhost:${port}`);
