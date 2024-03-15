@@ -4,7 +4,9 @@ const app = express();
 const path = require('path')
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, 'score')));
+app.get('/score', (req, res) => {
+  res.sendFile(path.join(__dirname, 'score.html'));
+});
 
 //Connect to auth Redis
 const clientAuth = redis.createClient({

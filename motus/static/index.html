@@ -73,8 +73,7 @@
     <div id="wordFeedback"></div>
     <input type="text" id="wordInput" placeholder="Enter your guess">
     <button onclick="checkWord()">Check</button>
-    <button onclick="window.location.href='score.html'">View Score History</button>
-
+    <button onclick="window.location.href='/score'">View Score History</button>
     <script>
         async function fetchWordLength() {
             const response = await fetch('/word');

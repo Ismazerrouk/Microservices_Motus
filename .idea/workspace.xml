@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5936fcb-000c-4d4a-b1b3-613e8674c68d" name="Changes" comment="push push">
+    <list default="true" id="a5936fcb-000c-4d4a-b1b3-613e8674c68d" name="Changes" comment="nouvelle architecture FE/BE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/motus/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/motus/static/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/score/score.html" beforeDir="false" afterPath="$PROJECT_DIR$/score/score.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/score/score.js" beforeDir="false" afterPath="$PROJECT_DIR$/score/score.js" afterDir="false" />
@@ -65,6 +64,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mikealpharomeo/Desktop/Microservices_Motus&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -86,7 +86,9 @@
       <workItem from="1710501616553" duration="719000" />
       <workItem from="1710502336381" duration="21677000" />
       <workItem from="1710537249579" duration="40000" />
-      <workItem from="1710537299347" duration="337000" />
+      <workItem from="1710537299347" duration="418000" />
+      <workItem from="1710537735530" duration="13000" />
+      <workItem from="1710537749411" duration="2321000" />
     </task>
     <task id="LOCAL-00001" summary="commented out the scoring section that will be move to 'score' directory">
       <option name="closed" value="true" />
@@ -232,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710522250227</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="nouvelle architecture FE/BE">
+      <option name="closed" value="true" />
+      <created>1710537696583</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1710537696583</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,6 +311,7 @@
     <MESSAGE value="correction 3 docker-compose.yml score port on 6380" />
     <MESSAGE value="New frontend for index + score" />
     <MESSAGE value="push push" />
-    <option name="LAST_COMMIT_MESSAGE" value="push push" />
+    <MESSAGE value="nouvelle architecture FE/BE" />
+    <option name="LAST_COMMIT_MESSAGE" value="nouvelle architecture FE/BE" />
   </component>
 </project>
