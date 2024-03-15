@@ -12,12 +12,23 @@
   </div>
 
   <script>
-    $(document).ready(() => {
-      $.get('/getscore?playerId=1', (data) => {
-        $('#nbWords').append(data.score);
-        $('#avgTry').append(data.tries);
+    async function checkWord() {
+      const word = document.getElementById('wordInput').value;
+      const response = await fetch('/checkword', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ word })
       });
-    });
+      const data = await response.json();
+      document.getElementById('wordFeedback').innerHTML = data.feedback;
+
+      // Redirect to score page if the word is correct
+      if (data.isCorrect) {
+        window.location.href = '/score.html'; // Assuming score.html is statically served
+      }
+    }
   </script>
 </body>
 </html>

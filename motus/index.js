@@ -36,24 +36,25 @@ app.get('/word', (req, res) => {
 
 app.post('/checkword', async (req, res) => {
     let feedback = '';
-    let correctPositions = []; // Initialize correctPositions as an empty array
+    let correctPositions = [];
     const word = req.body.word;
+    let isCorrect = true; // Assume true, prove false
 
     for (let i = 0; i < word.length; i++) {
-        if (word[i] === wordOfTheDay[i]) { // Use wordOfTheDay instead of targetWord
+        if (word[i] === wordOfTheDay[i]) {
             feedback += '<span style="background-color: green">' + word[i] + '</span>';
             correctPositions.push(i);
-        } else if (wordOfTheDay.includes(word[i])) { // Use wordOfTheDay instead of targetWord
+        } else if (wordOfTheDay.includes(word[i])) {
             feedback += '<span style="background-color: orange">' + word[i] + '</span>';
+            isCorrect = false; // Not fully correct
         } else {
-            feedback += '_';
+            feedback += '<span class="empty">_</span>';
+            isCorrect = false; // Not fully correct
         }
     }
 
-    // Assuming you want to return some response to the client
-    res.json({ feedback, correctPositions });
+    res.json({ feedback, correctPositions, isCorrect }); // Include isCorrect flag
 });
-
 
 // Commented out section moved to 'score' microservice
 /*

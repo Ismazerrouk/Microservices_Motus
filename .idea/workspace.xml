@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5936fcb-000c-4d4a-b1b3-613e8674c68d" name="Changes" comment="correction 2 docker-compose.yml">
+    <list default="true" id="a5936fcb-000c-4d4a-b1b3-613e8674c68d" name="Changes" comment="correction 3 docker-compose.yml score port on 6380">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/motus/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/motus/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/motus/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/motus/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/score/score.html" beforeDir="false" afterPath="$PROJECT_DIR$/score/score.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710501615500</updated>
       <workItem from="1710501616553" duration="719000" />
-      <workItem from="1710502336381" duration="12909000" />
+      <workItem from="1710502336381" duration="14132000" />
     </task>
     <task id="LOCAL-00001" summary="commented out the scoring section that will be move to 'score' directory">
       <option name="closed" value="true" />
@@ -178,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710514838714</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="correction 3 docker-compose.yml score port on 6380">
+      <option name="closed" value="true" />
+      <created>1710516085252</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1710516085252</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +254,7 @@
     <MESSAGE value="TO DO  - No connexion between DBs" />
     <MESSAGE value="correction docker-compose.yml" />
     <MESSAGE value="correction 2 docker-compose.yml" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction 2 docker-compose.yml" />
+    <MESSAGE value="correction 3 docker-compose.yml score port on 6380" />
+    <option name="LAST_COMMIT_MESSAGE" value="correction 3 docker-compose.yml score port on 6380" />
   </component>
 </project>
