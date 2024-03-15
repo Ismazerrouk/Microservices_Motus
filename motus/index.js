@@ -1,99 +1,100 @@
+//const isAuthenticated = require('../auth/auth.js');
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000
-
-const cors = require('cors');
-app.use(cors());
-
+const port = process.env.PORT || 3000 ;
 const fs = require('fs');
+const fetch = require('cross-fetch');
 
-const frenchWordsFilePath = 'data/liste_francais_utf8.txt';
-try {
-  const frenchWordsData = fs.readFileSync(frenchWordsFilePath, 'utf8');
-  const frenchWordsArray = frenchWordsData.split('\n');
-  if (frenchWordsArray.length === 0) {
-    throw new Error('French words array is empty.');
-  }
-  //console.log(`French words array length: ${frenchWordsArray.length}`);
-  frenchwords = frenchWordsArray;
-} catch (err) {
-  console.error('Error reading French words file:', err);
-}
-
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
+//const fetch = require('node-fetch');
 
 app.use(express.static('static'));
+app.use(express.json());
+
+
+// Lecture du fichier texte de manière asynchrone
+const frenchwords = fs.readFileSync('data/liste_francais_utf8.txt', 'utf8').split('\n');
+
+    // Exemple : Création d'un tableau à partir des lignes
+const tableau = frenchwords.map(frenchwords => frenchwords.trim()); // Supprimer les espaces inutiles
+
+const seedrandom = require('seedrandom');
+
+// Générer le nombre aléatoire une fois pour la journée
+const date = new Date();
+const seed = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+const rng = seedrandom(seed);
+const randomNumber = Math.floor(rng() * tableau.length);
+
+// Utiliser le nombre aléatoire pour obtenir le mot correspondant
+const wordOfTheDay = tableau[randomNumber];
+
+// Route pour afficher le contenu
+app.get('/word', (req, res) => {
+    res.send(`Hello, the word of the day is: ${wordOfTheDay}`)
+});
+
+
+app.post('/checkword', async (req, res) => {
+    let nb_try = 0;
+    let success = 0;
+    const word = req.body.word;
+
+    let feedback = '';
+    if (word === wordOfTheDay){
+        success++;
+    }
+    nb_try++;
+
+    
+
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] === wordOfTheDay[i]) {
+            feedback += '<span style="background-color: green">' + word[i] + '</span>';
+        } else if (wordOfTheDay.includes(word[i])) {
+            feedback += '<span style="background-color: orange">' + word[i] + '</span>';
+        } else {
+            feedback += word[i];
+        }
+        }
+
+        // Envoie du feedback en réponse
+        res.send({ message: feedback });
+
+        // Envoi des données à une autre application Node.js avec fetch
+    const scoreData = {
+        nb_try: nb_try,
+        success: success,
+        // Ajoutez d'autres données si nécessaire
+    };
+
+    fetch('http://localhost:3001/setscore', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(scoreData),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Score enregistré avec succès :', data);
+    })
+    .catch(error => {
+        console.error('Erreur lors de l\'enregistrement du score :', error);
+    });
+
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/static/index.html');
+    
+});
 
 app.get('/port', (req, res) => {
-  const os = require('os');
-  const hostname = os.hostname();
-  // Renvoie le système d'exploitation et le port d'écoute
-  res.send(`MOTUS APP working on ${hostname} port ${port}`);
+    const os = require('os');
+    res.send(`The app is working with os: ${os} on port: ${port}`)
 });
-
-function getRandomWord() {
-  const randomIndex = Math.floor(Math.random() * frenchwords.length);
-  return frenchwords[randomIndex];
-}
-let selectedWord;
-
-function selectWordOfTheDay() {
-  selectedWord = getRandomWord();
-}
-selectWordOfTheDay();
-
-app.get('/word', (req, res) => {
-  if (selectedWord) {
-    const wordLength = selectedWord.length;
-    res.json({ wordLength });
-  } else {
-    res.status(500).send('No word today.');
-  }
-});
-
-app.post('/checkword', (req, res) => {
-  const word = req.body.word;
-  const targetWord = selectedWord;
-  let feedback = '';
-  let correctPositions = [];
-
-  for (let i = 0; i < word.length; i++) {
-    if (word[i] === targetWord[i]) {
-      feedback += '<span style="background-color: green">' + word[i] + '</span>';
-      correctPositions.push(i);
-    } else if (targetWord.includes(word[i])) {
-      feedback += '<span style="background-color: orange">' + word[i] + '</span>';
-    } else {
-      feedback += '_';
-    }
-  }
-
-  res.json({ feedback, correctPositions });
-});
-
-// In-memory storage for demonstration
-let scores = {};
-
-// Endpoint to set score for a player
-app.post('/setscore', (req, res) => {
-  const { player, score } = req.body;
-  scores[player] = score;
-  res.json({ message: `Score for ${player} is now ${score}` });
-});
-
-// Endpoint to get score for a player
-app.get('/getscore/:player', (req, res) => {
-  const { player } = req.params;
-  const score = scores[player];
-  if (score !== undefined) {
-    res.json({ player, score });
-  } else {
-    res.status(404).send('Player not found');
-  }
-});
-
+ 
 
 app.listen(port, () => {
-  console.log(`Server is listening at http://localhost:${port}`);
+    console.log(`Example app listening on port http://localhost:${port}`);
 });
