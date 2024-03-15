@@ -1,37 +1,30 @@
 version: '3'
-
 services:
   redis-auth:
-    image: redis:latest
+    image: redis
     ports:
-      - "6379:6379"
-
+      - "6379"
   redis-score:
-    image: redis:latest
+    image: redis
     ports:
-      - "6380:6379"
-
+      - "6380"
   auth:
-    build:
-      context: ./auth
-      dockerfile: Dockerfile
+    build: ./auth
     ports:
       - "3005:3005"
     environment:
       - REDIS_URL=redis://redis-auth:6379
-
+    depends_on:
+      - redis-auth
   motus:
-    build:
-      context: ./motus
-      dockerfile: Dockerfile
+    build: ./motus
     ports:
       - "3000:3000"
-
   score:
-    build:
-      context: ./score
-      dockerfile: Dockerfile
+    build: ./score
     ports:
       - "3001:3001"
     environment:
-      - REDIS_URL=redis://redis-score:6379
+      - REDIS_URL=redis://redis-score:6380
+    depends_on:
+      - redis-score
