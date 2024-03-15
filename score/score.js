@@ -2,7 +2,15 @@ const express = require('express');
 const redis = require('redis');
 
 const app = express();
-const client = redis.createClient();
+
+app.use(express.json());
+
+// Configuration of Redis Cli
+const client = redis.createClient({
+  url: process.env.REDIS_URL || "redis://localhost:6379"
+});
+client.connect();
+
 
 // Endpoint to record player score
 app.post('/setscore', (req, res) => {
@@ -26,6 +34,6 @@ app.get('/getscore', (req, res) => {
   });
 });
 
-app.listen(4000, () => {
-  console.log('Server running on port 4000');
+app.listen(3001, () => {
+  console.log('Server running on port 3001');
 });

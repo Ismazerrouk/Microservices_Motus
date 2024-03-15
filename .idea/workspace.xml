@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5936fcb-000c-4d4a-b1b3-613e8674c68d" name="Changes" comment="score comment correction">
-      <change afterPath="$PROJECT_DIR$/auth/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/motus/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/score/Dockerfile" afterDir="false" />
+    <list default="true" id="a5936fcb-000c-4d4a-b1b3-613e8674c68d" name="Changes" comment="Dockerfile correction">
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/DockerFile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/motus/DockerFile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/score/DockerFile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docker-compose.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/score/score.js" beforeDir="false" afterPath="$PROJECT_DIR$/score/score.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710501615500</updated>
       <workItem from="1710501616553" duration="719000" />
-      <workItem from="1710502336381" duration="4650000" />
+      <workItem from="1710502336381" duration="6386000" />
     </task>
     <task id="LOCAL-00001" summary="commented out the scoring section that will be move to 'score' directory">
       <option name="closed" value="true" />
@@ -124,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710505551166</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Dockerfile correction">
+      <option name="closed" value="true" />
+      <created>1710507623389</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1710507623389</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +188,7 @@
     <MESSAGE value="commented out the scoring section that will be move to 'score' directory" />
     <MESSAGE value="New commit - score creation" />
     <MESSAGE value="score comment correction" />
-    <option name="LAST_COMMIT_MESSAGE" value="score comment correction" />
+    <MESSAGE value="Dockerfile correction" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dockerfile correction" />
   </component>
 </project>
