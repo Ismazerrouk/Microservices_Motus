@@ -8,6 +8,7 @@ const session = require('express-session');
 const redis = require('redis');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
+const path = require('path');
 
 const app = express();
 app.use(express.static('static'));
@@ -26,7 +27,7 @@ let client = redis.createClient({
 })();
 
 client.on('ready', () => {
-    console.log("Connected to Redis !");
+    console.log("Connected to Redis auth !");
 });
 
 client.on("error", (err) => { 

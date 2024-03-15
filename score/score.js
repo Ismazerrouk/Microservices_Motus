@@ -3,20 +3,24 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-// Connect to auth Redis
+//Connect to auth Redis
 const clientAuth = redis.createClient({
-  url: process.env.REDIS_AUTH_URL || "redis://localhost:6379"
+  url: process.env.REDIS_AUTH_URL 
 });
 
 // Connect to score Redis
 const clientScore = redis.createClient({
-  url: process.env.REDIS_SCORE_URL || "redis://localhost:6380"
+  url: process.env.REDIS_SCORE_URL 
 });
 
 (async () => {
   await clientAuth.connect();
   await clientScore.connect();
 })();
+
+clientScore.on('ready', () => {
+  console.log("Connected to Redis score !");
+});
 
 // Endpoint to fetch user score
 app.get('/getuserandscore', async (req, res) => {

@@ -34,25 +34,25 @@ app.get('/word', (req, res) => {
 });
 
 // Route pour l'application Motis
-app.get('/', async (req, res) => {
-    // Logic to fetch user score history (using score microservice)
-    const username = req.session.username; // Assuming you have username in session
-    let scoreHistory;
-    try {
-        const response = await fetch(`http://localhost:3001/getuserandscore?username=${username}`);
-        scoreHistory = await response.json();
-    } catch (err) {
-        console.error('Error fetching score history:', err);
-        scoreHistory = { error: 'Failed to retrieve score history' };
-    }
+// app.get('/', async (req, res) => {
+//     // Logic to fetch user score history (using score microservice)
+//     const username = req.session.username; // Assuming you have username in session
+//     let scoreHistory;
+//     try {
+//         const response = await fetch(`http://localhost:3001/getuserandscore?username=${username}`);
+//         scoreHistory = await response.json();
+//     } catch (err) {
+//         console.error('Error fetching score history:', err);
+//         scoreHistory = { error: 'Failed to retrieve score history' };
+//     }
 
-    // Render index.html with score history data (e.g., using templating engine like EJS)
-    res.render('index', { scoreHistory });  // Assuming you have an EJS template
-});
+//     // Render index.html with score history data (e.g., using templating engine like EJS)
+//     res.render('index', { scoreHistory });  // Assuming you have an EJS template
+// });
 
-app.listen(3000, () => {
-    console.log('Motus server listening on port 3000');
-});
+// app.listen(3000, () => {
+//     console.log('Motus server listening on port 3000');
+// });
 
 app.post('/checkword', async (req, res) => {
     let feedback = '';
@@ -74,6 +74,10 @@ app.post('/checkword', async (req, res) => {
     }
 
     res.json({ feedback, correctPositions, isCorrect }); // Include isCorrect flag
+});
+
+app.get('/ViewScoreHistory', (req, res) => {
+    return res.redirect('http://localhost:3001')
 });
 
 // Commented out section moved to 'score' microservice

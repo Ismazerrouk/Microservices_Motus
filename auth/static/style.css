@@ -49,3 +49,58 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #006600; /* Darker green on hover */
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Lighter background */
+    color: #333; /* Dark gray text color */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #008000; /* Green header color */
+    text-align: center;
+    margin-top: 50px; /* More top margin for better spacing */
+}
+
+form {
+    max-width: 400px;
+    margin: 50px auto; /* More vertical margin for better spacing */
+    padding: 20px;
+    background-color: #ffffff; /* White form background */
+    border: 1px solid #ccc; /* Border for form */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px; /* Larger font size for better readability */
+}
+
+button[type="submit"] {
+    background-color: #008000; /* Green button background */
+    color: #ffffff; /* White button text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px; /* Larger font size for better readability */
+}
+
+button[type="submit"]:hover {
+    background-color: #006600; /* Darker green on hover */
+}

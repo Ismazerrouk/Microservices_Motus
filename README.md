@@ -15,10 +15,12 @@ Chaque microservice a son propre `Dockerfile` pour construire une image Docker, 
 ## Comment exécuter ce projet avec Docker
 
 1. Clonez ce dépôt :
-git clone https://github.com/yourusername/yourrepository.git
+```git clone https://github.com/yourusername/yourrepository.git```
 
 2. Build and run Docker containers :
-docker-compose up --build
+```docker-compose up --build``` 
+
+
 
 Les microservices sont maintenant accessibles aux adresses suivantes :
 
@@ -42,6 +44,8 @@ jsonwebtoken
 os
 redis
 seedrandom
+
+
 
 
 ##Diagram Mermaid
