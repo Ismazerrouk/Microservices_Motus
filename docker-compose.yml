@@ -26,5 +26,7 @@ services:
       - "3001:3001"
     environment:
       - REDIS_URL=redis://redis-score:6380
+      - REDIS_AUTH_URL=redis://redis-auth:6379
     depends_on:
       - redis-score
+      - redis-auth
