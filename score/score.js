@@ -20,19 +20,22 @@ app.post('/setscore', (req, res) => {
 });
 
 // Endpoint to display player score
-app.get('/getscore', (req, res) => {
+app.get('/getscore', async (req, res) => {
   const playerId = req.query.playerId;
-  client.hget('players', playerId, (err, reply) => {
-    if (err) {
-      res.status(500).send('Error fetching score');
-    } else if (reply) {
+  try {
+    const reply = await client.hGet('players', playerId);
+    if (reply) {
       const { score, tries } = JSON.parse(reply);
       res.json({ score, tries });
     } else {
       res.status(404).send('Player not found');
     }
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error fetching score');
+  }
 });
+
 
 app.listen(3001, () => {
   console.log('Server running on port 3001');
