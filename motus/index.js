@@ -83,7 +83,7 @@ app.get('/getscore/:player', (req, res) => {
     res.status(404).send('Player not found');
   }
 });
-
+*/
 
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`);
