@@ -47,53 +47,43 @@ app.post('/checkword', async (req, res) => {
 
     
 
-    for (let i = 0; i < word.length; i++) {
-        if (word[i] === wordOfTheDay[i]) {
-            feedback += '<span style="background-color: green">' + word[i] + '</span>';
-        } else if (wordOfTheDay.includes(word[i])) {
-            feedback += '<span style="background-color: orange">' + word[i] + '</span>';
-        } else {
-            feedback += word[i];
-        }
-        }
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === targetWord[i]) {
+      feedback += '<span style="background-color: green">' + word[i] + '</span>';
+      correctPositions.push(i);
+    } else if (targetWord.includes(word[i])) {
+      feedback += '<span style="background-color: orange">' + word[i] + '</span>';
+    } else {
+      feedback += '_';
+    }
+  }
 
-        // Envoie du feedback en réponse
-        res.send({ message: feedback });
-
-        // Envoi des données à une autre application Node.js avec fetch
-    const scoreData = {
-        nb_try: nb_try,
-        success: success,
-        // Ajoutez d'autres données si nécessaire
-    };
-
-    fetch('http://localhost:3001/setscore', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(scoreData),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Score enregistré avec succès :', data);
-    })
-    .catch(error => {
-        console.error('Erreur lors de l\'enregistrement du score :', error);
-    });
-
+  res.json({ feedback, correctPositions });
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/static/index.html');
-    
+// Commented out section moved to 'score' microservice
+/*
+// In-memory storage for demonstration
+let scores = {};
+
+// Endpoint to set score for a player
+app.post('/setscore', (req, res) => {
+  const { player, score } = req.body;
+  scores[player] = score;
+  res.json({ message: `Score for ${player} is now ${score}` });
 });
 
-app.get('/port', (req, res) => {
-    const os = require('os');
-    res.send(`The app is working with os: ${os} on port: ${port}`)
+// Endpoint to get score for a player
+app.get('/getscore/:player', (req, res) => {
+  const { player } = req.params;
+  const score = scores[player];
+  if (score !== undefined) {
+    res.json({ player, score });
+  } else {
+    res.status(404).send('Player not found');
+  }
 });
- 
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`);
