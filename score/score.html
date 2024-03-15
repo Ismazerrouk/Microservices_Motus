@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Score Page</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div>
+    <h1>Score Information</h1>
+    <p id="nbWords">Nb Word(s) found: </p>
+    <p id="avgTry">Average try: </p>
+  </div>
+
+  <script>
+    $(document).ready(() => {
+      $.get('/getscore?playerId=1', (data) => {
+        $('#nbWords').append(data.score);
+        $('#avgTry').append(data.tries);
+      });
+    });
+  </script>
+</body>
+</html>
