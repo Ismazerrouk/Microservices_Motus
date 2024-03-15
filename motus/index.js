@@ -35,31 +35,25 @@ app.get('/word', (req, res) => {
 
 
 app.post('/checkword', async (req, res) => {
-    let nb_try = 0;
-    let success = 0;
+    let feedback = '';
+    let correctPositions = []; // Initialize correctPositions as an empty array
     const word = req.body.word;
 
-    let feedback = '';
-    if (word === wordOfTheDay){
-        success++;
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] === wordOfTheDay[i]) { // Use wordOfTheDay instead of targetWord
+            feedback += '<span style="background-color: green">' + word[i] + '</span>';
+            correctPositions.push(i);
+        } else if (wordOfTheDay.includes(word[i])) { // Use wordOfTheDay instead of targetWord
+            feedback += '<span style="background-color: orange">' + word[i] + '</span>';
+        } else {
+            feedback += '_';
+        }
     }
-    nb_try++;
 
-    
-
-  for (let i = 0; i < word.length; i++) {
-    if (word[i] === targetWord[i]) {
-      feedback += '<span style="background-color: green">' + word[i] + '</span>';
-      correctPositions.push(i);
-    } else if (targetWord.includes(word[i])) {
-      feedback += '<span style="background-color: orange">' + word[i] + '</span>';
-    } else {
-      feedback += '_';
-    }
-  }
-
-  res.json({ feedback, correctPositions });
+    // Assuming you want to return some response to the client
+    res.json({ feedback, correctPositions });
 });
+
 
 // Commented out section moved to 'score' microservice
 /*
