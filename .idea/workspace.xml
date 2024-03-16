@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5936fcb-000c-4d4a-b1b3-613e8674c68d" name="Changes" comment="accès au score sur &quot;http://localhost:3001/score&quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a5936fcb-000c-4d4a-b1b3-613e8674c68d" name="Changes" comment="Last one for the team">
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motus/rules.js" beforeDir="false" afterPath="$PROJECT_DIR$/motus/static/rules.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motus/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/motus/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/score/score.js" beforeDir="false" afterPath="$PROJECT_DIR$/score/score.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +96,7 @@
       <workItem from="1710537299347" duration="418000" />
       <workItem from="1710537735530" duration="13000" />
       <workItem from="1710537749411" duration="10158000" />
-      <workItem from="1710568135497" duration="1674000" />
+      <workItem from="1710568135497" duration="1951000" />
     </task>
     <task id="LOCAL-00001" summary="commented out the scoring section that will be move to 'score' directory">
       <option name="closed" value="true" />
@@ -270,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710546104402</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Last one for the team">
+      <option name="closed" value="true" />
+      <created>1710569822679</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1710569822679</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,6 +345,7 @@
     <MESSAGE value="push push" />
     <MESSAGE value="nouvelle architecture FE/BE" />
     <MESSAGE value="accès au score sur &quot;http://localhost:3001/score&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="accès au score sur &quot;http://localhost:3001/score&quot;" />
+    <MESSAGE value="Last one for the team" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last one for the team" />
   </component>
 </project>
