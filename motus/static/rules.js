@@ -60,13 +60,13 @@ $(document).ready(function() {
 
     // Interacting with the score service
     function setScore(score) {
-        // Assuming the score service expects a JSON with playerId, score, and tries
+        const username = localStorage.getItem('currentUsername'); // Retrieve the current user's username
         $.ajax({
-            url: 'http://localhost:3001/setscore', // Adjust port and route as necessary
+            url: 'http://localhost:3001/setscore',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
-                playerId: "currentUserId", // Use actual user ID/session data
+                username: username, // Now passing the actual username
                 score: score,
                 tries: 5 - attempts
             }),
