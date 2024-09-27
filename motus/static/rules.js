@@ -27,7 +27,7 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: 'http://localhost:3000/checkword', // Adjust port and route as necessary
+            url: 'http://localhost:3000/checkword',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ word: userWord }),
@@ -60,18 +60,20 @@ $(document).ready(function() {
 
     // Interacting with the score service
     function setScore(score) {
-        // Assuming the score service expects a JSON with playerId, score, and tries
+        // Retrieve the username stored in localStorage/sessionStorage.
+        const username = localStorage.getItem('username'); // Adjust the key as needed based on your application's login logic
+
         $.ajax({
-            url: 'http://localhost:3001/setscore', // Adjust port and route as necessary
+            url: 'http://localhost:3001/setscore',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
-                playerId: "currentUserId", // Use actual user ID/session data
-                score: score,
+                username, // ES6 shorthand for username: username
+                score,
                 tries: 5 - attempts
             }),
-            success: function() {
-                console.log("Score updated successfully.");
+            success: function(response) {
+                console.log("Score updated successfully.", response);
             },
             error: function(xhr, status, error) {
                 console.error("Error updating score:", status, error);
