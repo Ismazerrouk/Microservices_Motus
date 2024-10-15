@@ -1,4 +1,4 @@
-# Projet Microservices
+# 🎲 Projet Motus (Microservices)
 
 Ce projet est une application de jeu Motus, divisée en plusieurs microservices. Chaque microservice est conteneurisé avec Docker.
 
